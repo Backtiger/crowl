@@ -16,6 +16,7 @@ using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 using System.Threading;
 using Tulpep.NotificationWindow;
 
+
 namespace crowl
 {
     public partial class Form2 : Form 
@@ -27,11 +28,13 @@ namespace crowl
 
         public Form2()
         {
+           
+
             driverService = ChromeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
 
-            option.AddArgument("disable-gpu");
-            // option.AddArgument("headless");
+            option.AddArgument("disable-gpu"); //그래픽 카드 사용 안함
+            // option.AddArgument("headless"); //웹페이지 창 안뜨게 설정
 
             driver = new ChromeDriver(driverService, option);
             InitializeComponent();
@@ -44,6 +47,7 @@ namespace crowl
 
             string id = "22009";
             string pw = "22009";
+            int min = Convert.ToInt32(txtminute.Text); //타이머 세팅값  설정
 
             driver.Navigate().GoToUrl("https://lineusadmin.cwit.co.kr/ad/login/form.do"); //url설정
 
@@ -62,25 +66,41 @@ namespace crowl
             var close = driver.FindElement(By.ClassName("btn_close"));//닫기버튼 클릭 변수설정
             var dam = driver.FindElement(By.XPath("//*[@id='top3_2']")); //담당자배정 클릭 변수
 
-            jub.Click();  
-            gettable.Jubsu(jub);
-            driver.ExecuteScript("arguments[0].click();", close); //클릭버튼 사용불가시 자바 스크립트 명령어로 사용대체
+            //jub.Click();   
+            //gettable.Jubsu(jub);  //접수건수 팝업 클래스
+            //driver.ExecuteScript("arguments[0].click();", close); //클릭버튼 사용불가시 자바 스크립트 명령어로 사용대체
+
+            
+            timer.Interval = (60 * min * 1000);
+           // timer.Tick += new EventHandler(timer1_Tick);
+            //void timer1_Tick(object sender, EventArgs e)
+            //{
+
+
+            //}
 
             dam.Click();
-            gettable.Jubsu(dam);
-            driver.ExecuteScript("arguments[0].click();", close);
+            gettable.Jubsu(dam);            
+            driver.ExecuteScript("arguments[0].click();", close);  // 담당자배정 창 닫기 버튼 클릭
 
             //element = driver.FindElement(By.XPath("//*[@id='asListLayer']/div[1]/button"));
             //element.Click();
             //gettable.Jubsu(dam, element);
-
+            
            
         }
+        //public void Alert(string msg) {
+        //    frmPopup frm = new frmPopup();
+        //    frm.showPopup(msg);
+        //}
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
+        
 
-        }
+
+       
+  
+
+  
 
     
    

@@ -15,6 +15,7 @@ using HtmlAgilityPack;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 using Tulpep.NotificationWindow;
 
+
 namespace crowl
 {
     class GetTable
@@ -23,7 +24,7 @@ namespace crowl
         List<IWebElement> list = new List<IWebElement>();
         int Count = 0;
         
-        public void Jubsu(IWebElement table)
+        public (List<IWebElement> LIST,int COUNT) Jubsu(IWebElement table)
         {
          
             try
@@ -36,36 +37,49 @@ namespace crowl
                 {
                     //Trace.WriteLine(row.Text);
 
-                    //list.Add(row);                    
+                    list.Add(row);       //라인어스 웹 테이블 값 추가            
 
-                    if (row.Text.Contains("이태현") || row.Text.Contains("김우준"))
+                    if (row.Text.Contains("오혜빈") || row.Text.Contains("김우준")) //배정 테이블 조회 할사람 이름 세팅
                     {
                         Count = Count + 1;                  
                     }
                 }               
-                Trace.WriteLine(Count.ToString());
+              //  Trace.WriteLine(Count.ToString());
 
                 if (Count > 0)
                 {
-                    popupset(Count);
+                  //popupset(Count); //notification기능 사용한 팝업
+                    popupshow(Count);
                 }
+
                 
             }
             catch { }
+            // Tuple 사용해서 list,Count값 반환
+            return (list, Count);
         }
        //<summary>
        //notification 기능 사용 팝업창
        //</summary>
        //
-        public void popupset(int Count)
-        {
-            PopupNotifier Popup = new PopupNotifier();
+        //public void popupset(int Count)
+        //{
+        //    PopupNotifier Popup = new PopupNotifier();
     
-            Popup.TitleText = "라인어스 배정 알리미";
-            Popup.ContentText = "기준시간" + DateTime.Now.ToString()+ "|n" + Count + "건 접수되었습니다.";
-            Popup.Popup();
+           
+        //    Popup.TitleText = "라인어스 담당자 배정 알리미";
+        //    Popup.ContentText = "기준시간" + DateTime.Now.ToString()+"\n" + Count + "건 접수되었습니다.";
+        //    Popup.Popup();
 
 
+        //}
+        public void popupshow(int Count)
+        {
+            frmPopup frm = new frmPopup();
+            string msg = "기준시간" + DateTime.Now.ToString() + "\n" + Count + "건 접수되었습니다.";
+            frm.showPopup(msg);
+            
+            
         }
     }
 

@@ -13,9 +13,13 @@ namespace crowl
 {
     public partial class frmPopup : Form
     {
-        public frmPopup()
+     
+
+        public frmPopup(string message)
         {
             InitializeComponent();
+
+            showPopup(message);
         }
         public enum enmAction
         {
@@ -34,6 +38,7 @@ namespace crowl
             action = enmAction.close;
         }
 
+        //animation 효과
         private void timer1_Tick(object sender, EventArgs e)
         {
             switch (this.action)
@@ -87,19 +92,21 @@ namespace crowl
 
             for (int i=0; i < 10; i++)
             {
-                fname = "alert" + i.ToString();
+                fname = "alert" + i.ToString(); //폼이름설정
                 frmPopup frm = (frmPopup)Application.OpenForms[fname];//fname의 폼 생성
 
                 if (frm == null)
                 {
-                    this.Name = fname; 
-                    this.x = Screen.PrimaryScreen.WorkingArea.Width - this.Width + 50; //기본디스플레이(내 컴퓨터 화면) - 50
-                    this.y = Screen.PrimaryScreen.WorkingArea.Height * i;//기본디스플레이(내 컴퓨터 화면) y축 세팅
-                    
+                    this.Name = fname;
+                    this.x = Screen.PrimaryScreen.Bounds.Width / 2 - this.Size.Width / 2;
+                    //this.x = Screen.PrimaryScreen.WorkingArea.Width - this.Width + 50; //기본디스플레이(내 컴퓨터 화면) - 50
+                    //this.y = Screen.PrimaryScreen.WorkingArea.Height * i;//기본디스플레이(내 컴퓨터 화면) y축 세팅
+                    this.y= Screen.PrimaryScreen.Bounds.Height / 2 - this.Size.Height / 2; ;
+
                     this.Location = new Point(this.x, this.y); //시작위치 Location값 설정
 
                     break;
-                }
+               }
 
             }
             this.x = Screen.PrimaryScreen.WorkingArea.Width - base.Width - 5;

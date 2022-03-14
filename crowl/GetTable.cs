@@ -35,7 +35,7 @@ namespace crowl
 
                 foreach (IWebElement row in rows)
                 {
-                    //Trace.WriteLine(row.Text);
+                    Trace.WriteLine(row.Text);
 
                     list.Add(row);       //라인어스 웹 테이블 값 추가            
 
@@ -51,7 +51,7 @@ namespace crowl
                   //popupset(Count); //notification기능 사용한 팝업
                     popupshow(Count);
                 }
-
+                Trace.WriteLine(Count);
                 
             }
             catch { }
@@ -75,11 +75,17 @@ namespace crowl
         //}
         public void popupshow(int Count)
         {
-            frmPopup frm = new frmPopup();
+            
             string msg = "기준시간" + DateTime.Now.ToString() + "\n" + Count + "건 접수되었습니다.";
-            frm.showPopup(msg);
-            
-            
+            Trace.WriteLine(msg);
+            frmPopup frm = new frmPopup(msg);
+            //frm.showPopup(msg);
+
+            //frm.showPopup(msg);
+           
+
+
+
         }
     }
 

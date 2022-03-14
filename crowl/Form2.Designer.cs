@@ -30,19 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtminute = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPW = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.txtminute = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txtminute);
             this.panel2.Controls.Add(this.btnLogin);
@@ -54,6 +56,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(581, 168);
             this.panel2.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(379, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 12);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "시간 주기 설정(분)";
+            // 
+            // txtminute
+            // 
+            this.txtminute.Location = new System.Drawing.Point(381, 80);
+            this.txtminute.Name = "txtminute";
+            this.txtminute.Size = new System.Drawing.Size(100, 21);
+            this.txtminute.TabIndex = 5;
             // 
             // btnLogin
             // 
@@ -98,25 +116,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
-            // timer
+            // button1
             // 
-           // this.timer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // txtminute
-            // 
-            this.txtminute.Location = new System.Drawing.Point(381, 80);
-            this.txtminute.Name = "txtminute";
-            this.txtminute.Size = new System.Drawing.Size(100, 21);
-            this.txtminute.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(379, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 12);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "시간 주기 설정(분)";
+            this.button1.Location = new System.Drawing.Point(381, 107);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form2
             // 
@@ -142,5 +150,6 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtminute;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -22,19 +22,20 @@ namespace crowl
     {
         ChromeDriver driver = null;
         List<IWebElement> list = new List<IWebElement>();
-        int Count = 0;
+        
         
         public (List<IWebElement> LIST,int COUNT) Jubsu(IWebElement table)
         {
-         
+            int Count = 0;
             try
             {    
                 var tbody = table.FindElement(By.XPath("//*[@id='asListBody']"));   //담당자배정 xpath
                 var rows = tbody.FindElements(By.TagName("tr"));
-          
+                
 
                 foreach (IWebElement row in rows)
                 {
+                  
                     Trace.WriteLine(row.Text);
 
                     list.Add(row);                                                  //라인어스 웹 테이블 값 list넣기           
@@ -56,6 +57,7 @@ namespace crowl
             }
             catch { }
             // Tuple 사용해서 list,Count값 반환
+           
             return (list, Count);
         }
        
@@ -81,9 +83,8 @@ namespace crowl
             string msg = "기준시간" + DateTime.Now.ToString() + "\n" + Count + "건 접수되었습니다.";
             Trace.WriteLine(msg);
             frmPopup frmPopup = new frmPopup();
-            frmPopup.showPopup(msg);
-           
-            //
+            frmPopup.showPopup(msg);         
+
         }
 
     }

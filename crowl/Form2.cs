@@ -15,6 +15,8 @@ namespace crowl
         ChromeOptions option = new ChromeOptions();
         GetTable gettable = new GetTable();
         Thread thread;
+        int num = 0;
+
         public Form2()
         {
            
@@ -33,7 +35,8 @@ namespace crowl
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Run();   
+            timerstart();
+            Run();               
         }
           
                   
@@ -69,7 +72,22 @@ namespace crowl
          
         }
 
-     
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timerFunction();
+        }
+        private void timerFunction()
+        {
+            Run();
+        }
+        private void timerstart()
+        {
+            int min = 0;
+            timer1.Start();
+            min = Convert.ToInt32(txtminute.Text);
+            timer1.Interval = 60000 * min;
+            timer1.Enabled = true;
+        }
     }
 
 }

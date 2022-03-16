@@ -78,6 +78,11 @@ namespace crowl
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public void showPopup(string msg)
         {
             this.Opacity = 0.0;                                                           //현재 폼 투명도 설정 1 = 100%

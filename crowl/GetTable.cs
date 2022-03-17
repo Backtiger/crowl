@@ -22,45 +22,60 @@ namespace crowl
     {
         ChromeDriver driver = null;
         List<IWebElement> list = new List<IWebElement>();
-        
-        
-        public (List<IWebElement> LIST,int COUNT) Jubsu(IWebElement table)
+
+
+        public (List<IWebElement> LIST, int COUNT) Jubsu(IWebElement table)
         {
             int Count = 0;
+            int i = 0;
+            IWebElement element;
+
             try
-            {    
+            {
                 var tbody = table.FindElement(By.XPath("//*[@id='asListBody']"));   //담당자배정 xpath
                 var rows = tbody.FindElements(By.TagName("tr"));
-                
+
 
                 foreach (IWebElement row in rows)
                 {
-                  
-                    Trace.WriteLine(row.Text);
 
+                    Trace.WriteLine(row.Text);
+                    i = i + 1;
                     list.Add(row);                                                  //라인어스 웹 테이블 값 list넣기           
 
-                    if (row.Text.Contains("오혜빈") || row.Text.Contains("김우준")) //배정 테이블 조회 할사람 이름 세팅
+                    if (row.Text.Contains("오혜빈") ) //배정 테이블 조회 할사람 이름 세팅
                     {
-                        Count = Count + 1;                  
+                        Count = Count + 1;                        
                     }
-                }               
-              
+
+                }
+
 
                 if (Count > 0)
                 {
-                  //popupset(Count);                                                //notification기능 사용한 팝업
+                    //popupset(Count);                                                //notification기능 사용한 팝업
                     popupshow(Count);
                 }
                 Trace.WriteLine(Count);
-                
+
             }
             catch { }
             // Tuple 사용해서 list,Count값 반환
-           
+            //driver.Close();
             return (list, Count);
         }
-       
+
+        //public void match()
+        //{
+            
+        //    foreach (List<IWebElement> row in list)
+        //    {
+                
+        //        //var tbody = element.FindElement(By.XPath("//*[@id='asListBody']"));   //담당자배정 xpath
+        //        var rows = tbody.FindElements(By.TagName("tr"));
+
+        //    }
+        //}
         //<summary>
         //notification 기능 사용 팝업창
         //</summary>
@@ -75,7 +90,7 @@ namespace crowl
         //    Popup.Popup();
         
         //}
-
+        
 
         public void popupshow(int Count)
         {
@@ -86,6 +101,7 @@ namespace crowl
             frmPopup.showPopup(msg);         
 
         }
+  
 
     }
 

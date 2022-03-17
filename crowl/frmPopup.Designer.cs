@@ -40,11 +40,12 @@
             // lbmsg
             // 
             this.lbmsg.AutoSize = true;
-            this.lbmsg.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lbmsg.Location = new System.Drawing.Point(109, 50);
+            this.lbmsg.Font = new System.Drawing.Font("Yu Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbmsg.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbmsg.Location = new System.Drawing.Point(109, 39);
             this.lbmsg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbmsg.Name = "lbmsg";
-            this.lbmsg.Size = new System.Drawing.Size(72, 30);
+            this.lbmsg.Size = new System.Drawing.Size(95, 35);
             this.lbmsg.TabIndex = 0;
             this.lbmsg.Text = "label1";
             // 
@@ -66,9 +67,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(479, 36);
+            this.button1.Location = new System.Drawing.Point(510, 51);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 87);
+            this.button1.Size = new System.Drawing.Size(56, 62);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);

@@ -13,6 +13,8 @@ namespace crowl
 {
     public partial class frmPopup : Form
     {
+        public EventHandler Open;
+        GetTable get = new GetTable();
         private frmPopup.enmAction action;
         private int x, y;
 
@@ -78,9 +80,10 @@ namespace crowl
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        public  void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            Form2 form = new Form2();
+            form.Refresh();
         }
 
         public void showPopup(string msg)
@@ -117,6 +120,7 @@ namespace crowl
 
 
         }
+     
 
     }
 }
